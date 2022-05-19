@@ -17,3 +17,11 @@ export type PlayerStructure = {
     score: number;
     level: number;
 }
+
+export type PlataformStructure = {
+    height: number;
+    width: number;
+    x: number;
+    color: string;
+    speed: number;
+}
