@@ -8,10 +8,10 @@ export const data = {
     ballObj: {
         x: 20,
         y: 200,
-        dx: 5,
-        dy: 5,
-        rad: 20,
-        speed: 1
+        dx: 2,
+        dy: 2,
+        rad: 15,
+        speed: 10
     } as StructureObjGeometric,
     brickObj: {
         x: 0.5,

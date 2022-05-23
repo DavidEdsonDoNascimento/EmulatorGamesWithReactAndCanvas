@@ -3,13 +3,13 @@ import { StructureObjGeometric } from "../../types/StructureObjects"
 import { Ball } from "./Ball"
 
 export const BallMovement = (
-    context: any, 
+    context: any,
     ball: StructureObjGeometric
 ) => {
-    
+
     let data = new Ball(
-        ball.x, 
-        ball.y, 
+        ball.x,
+        ball.y,
         ball.rad || 0
     )
     data.draw(context)

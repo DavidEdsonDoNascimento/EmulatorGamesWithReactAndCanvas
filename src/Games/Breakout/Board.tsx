@@ -18,11 +18,9 @@ export const Board = () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-
         BallMovement(ctx, ball)
         WallCollision(ball, canvas)
         PlataformMovement(ctx, canvas.width, canvas.height, plataformProps)
-
 
         requestAnimationFrame(render)
     }
