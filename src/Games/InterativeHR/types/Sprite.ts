@@ -16,9 +16,9 @@ export class Sprite {
     private speed = 1;
     private img: any;
 
-    constructor() {
+    constructor(spriteUrl: string) {
         const imageData = new Image()
-        imageData.src = 'tiles-compretos.png'
+        imageData.src = spriteUrl || 'tiles-compretos.png'
         console.log(imageData)
         this.img = imageData
     }

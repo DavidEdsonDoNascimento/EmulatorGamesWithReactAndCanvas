@@ -2,3 +2,23 @@
     background-image: url('./../utils/map.jpg');
     background-repeat: no-repeat;
 }
+
+.container {
+    display: block;
+}
+
+.container-selection {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 540px;
+    background: #fecc00;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin: auto;
+}
+
+.characterSelect {
+    cursor: pointer;
+}

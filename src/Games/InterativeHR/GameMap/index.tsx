@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { Sprite } from "./types/Sprite";
+import { Sprite } from "../types/Sprite";
 
 const DIRECTION = {
     LEFT: 37,
@@ -8,9 +8,12 @@ const DIRECTION = {
     DOWN: 40
 }
 
-const sprite = new Sprite();
 
-export const GameMap = () => {
+type GameMapProps = {
+    sprite: Sprite
+}
+
+export const GameMap = ({ sprite }: GameMapProps) => {
 
     const canvasRef = useRef<any>()
 
