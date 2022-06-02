@@ -16,12 +16,32 @@ type GameMapProps = {
 export const GameMap = ({ sprite }: GameMapProps) => {
 
     const canvasRef = useRef<any>()
+    const map = {
+        img: new Image(),
+        frameWidth: 800,
+        frameHeight: 600,
+        width: 3840,
+        height: 25031
+    }
 
     const render = () => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
+        map.img.src = '/map.jpg'
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        
+        ctx.drawImage(
+            map.img, 
+            map.width/2, 
+            map.height-map.frameHeight, 
+            map.frameWidth, 
+            map.frameHeight, 
+            0, 
+            0, 
+            map.frameWidth, 
+            map.frameHeight
+        )
 
         sprite.move()
         sprite.draw(ctx)
@@ -78,13 +98,13 @@ export const GameMap = ({ sprite }: GameMapProps) => {
                 console.error('soltou tecla não cadastrada')
         }
     }
-
+    
     return <canvas
         tabIndex={0}
         className="canvas-container"
         ref={canvasRef}
-        width={800}
-        height={600}
+        width={map.frameWidth}
+        height={map.frameHeight}
         onKeyDown={keyDownHandler}
         onKeyUp={keyUpHandler}
     />

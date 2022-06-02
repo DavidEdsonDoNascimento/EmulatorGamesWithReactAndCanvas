@@ -5,20 +5,6 @@ import { GameMap } from './GameMap'
 import { Sprite } from './types/Sprite';
 
 export const InterativeHR = () => {
-    const characters = [
-        {
-            imgScreen: 'america_mini.png',
-            sprites: 'tiles-compretos.png'
-        },
-        {
-            imgScreen: 'chunli_mini.png',
-            sprites: 'tiles-compretos.png'
-        },
-        {
-            imgScreen: 'hulk_mini.png',
-            sprites: 'tiles-compretos.png'
-        }
-    ]
 
     const [characterSelected, setCharacterSelected] = useState<any>(null)
 
