@@ -1,17 +1,17 @@
 export class Sprite {
 
+    // Posição no canvas onde a figura será exibida
+    public posX = 0;
+    public posY = 0;
+    // Origem para captura da imagem a ser exibida
+    private srcX = 0;
+    private srcY = 0;
+    public width = 54; // tamaho da largura da imagem tiles-compretos.png dividido pelo numero de quadros da linha
+    public height = 96; // tamanho da altura da imagem tiles-compretos.png dividido pelo numero de quadros da coluna
     private moveLeft = false;
     private moveRight = false;
     private moveUp = false;
     private moveDown = false;
-    // Origem para captura da imagem a ser exibida
-    private srcX = 0;
-    private srcY = 0;
-    // Posição no canvas onde a figura será exibida
-    private posX = 0;
-    private posY = 0;
-    private width = 54; // tamaho da largura da imagem tiles-compretos.png dividido pelo numero de quadros da linha
-    private height = 96; // tamanho da altura da imagem tiles-compretos.png dividido pelo numero de quadros da coluna
     private countAnimation = 0;
     private speed = 1;
     private img: any;
@@ -53,6 +53,12 @@ export class Sprite {
             this.posY += this.speed;
             this.srcY = this.height * 0;
         }
+
+
+    }
+    public positionCenter(mapWidth: number, mapHeight: number): void {
+        this.posX = (mapWidth - this.width) / 2
+        this.posY = (mapHeight - this.height) / 2
     }
     /**
      * Desenha o sprite na tela

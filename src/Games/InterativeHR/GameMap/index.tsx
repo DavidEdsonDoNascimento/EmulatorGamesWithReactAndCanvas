@@ -1,13 +1,6 @@
 import { useEffect, useRef } from "react"
+import { CharacterCam } from "../CharacterCam";
 import { Sprite } from "../types/Sprite";
-
-const DIRECTION = {
-    LEFT: 37,
-    UP: 38,
-    RIGHT: 39,
-    DOWN: 40
-}
-
 
 type GameMapProps = {
     sprite: Sprite
@@ -16,6 +9,7 @@ type GameMapProps = {
 export const GameMap = ({ sprite }: GameMapProps) => {
 
     const canvasRef = useRef<any>()
+    
     const map = {
         img: new Image(),
         frameWidth: 800,
@@ -23,18 +17,26 @@ export const GameMap = ({ sprite }: GameMapProps) => {
         width: 3840,
         height: 25031
     }
+    
+    sprite.positionCenter(map.frameWidth, map.frameHeight)
+    
+    const cam = new CharacterCam(map.frameWidth, map.frameHeight)
 
     const render = () => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
         map.img.src = '/map.jpg'
 
+        cam.positionCenter(map.frameWidth, map.frameHeight)
+
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.save() 
+        ctx.translate(-cam.x, -cam.y)
         
         ctx.drawImage(
             map.img, 
-            map.width/2, 
-            map.height-map.frameHeight, 
+            (map.width-map.frameWidth)/2, 
+            (map.height-map.frameHeight)/2, 
             map.frameWidth, 
             map.frameHeight, 
             0, 
@@ -42,8 +44,11 @@ export const GameMap = ({ sprite }: GameMapProps) => {
             map.frameWidth, 
             map.frameHeight
         )
+        ctx.restore()
 
         sprite.move()
+        // atualiza posição da camera em relação ao movimento do sprite
+        cam.updatePosition(sprite)
         sprite.draw(ctx)
 
         requestAnimationFrame(render)
